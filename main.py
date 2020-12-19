@@ -23,7 +23,7 @@ st.sidebar.markdown('''
 **Required**
 ''')
 NDOTS = st.sidebar.number_input("Number of dots", value=92)
-FILLED_DOTS = st.sidebar.number_input("Number of dots", value=31)
+FILLED_DOTS = st.sidebar.number_input("Number of filled dots", value=31)
 
 st.sidebar.markdown('''
 **Optional**
