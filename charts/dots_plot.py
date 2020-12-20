@@ -4,13 +4,13 @@ import math
 
 def generate_grid(nrows, ncols, ndots):
   """
-  Generate grid of coordinates.
+  Generate grid of dots coordinates.
   
   Parameters:
     @Required:
     - nrows: Number of rows of the grid
     - ncols: Number of cols of the grid
-    - ndots: Number of dots
+    - ndots: Number of dot coordinates
 
   Return:
     2-D Numpy Array of the coordinates
@@ -45,7 +45,8 @@ def dots_plot(ndots, filled_dots,
              c_filled="#2980b9", 
              marker="o", 
              marker_size=10, 
-             font_style={}):
+             show_label=True,
+             lable_style={}):
   
   """
   Create "dots" plot.
@@ -67,7 +68,8 @@ def dots_plot(ndots, filled_dots,
     - c_filled: Color of filled dots
     - marker: Dot style (Matplotlib marker style)
     - marker_size: Dot size
-    - font_style: Title font style (Matplotlib fontdict)
+    - show_label: Whether to show/hide label
+    - lable_style: Title font style (Matplotlib fontdict)
 
   Return:
     Figure containing drawn plot 
@@ -104,7 +106,8 @@ def dots_plot(ndots, filled_dots,
   fig, ax = plt.subplots(figsize=(grid_width, grid_height))
 
   # Title
-  ax.set_title(filled_dots, font_style)
+  if show_label:
+    ax.set_title(filled_dots, lable_style)
 
   # Scatter plot
   ax.scatter(x=data[:,1],
@@ -112,9 +115,6 @@ def dots_plot(ndots, filled_dots,
              s=marker_size*20, 
              c=colors, 
              marker=marker)
-  
-  # Set plot size
-  # ax.figure.set_size_inches(grid_width, grid_height)
 
   # Hide axis
   ax.set_axis_off()
