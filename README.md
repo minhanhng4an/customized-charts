@@ -8,7 +8,8 @@ To save a plot, Right-click on the plot and select `Save Image As...`
 
 If you want to reuse the plot template for your own project, select `Show Code` to see template source code.
 
-> **[See Project](https://share.streamlit.io/minhanhng4an/customized-charts/main/main.py){:target="_blank"}**
+> **<a href="https://share.streamlit.io/minhanhng4an/customized-charts/main/main.py" target="_blank">See Project</a>**
+
 
 ## Contribute to the project
 
@@ -83,7 +84,9 @@ def your_plot_name():
 
 7. In folder component, create `your_plot_name.py` (`your_plot_name` is the name of the plot you want to make)
 
-This file contains the code (written in functions) to render the Plot Area and Plot Properties section on Streamlit ([Documentation](https://docs.streamlit.io/en/stable/api.html){:target="_blank"}).
+This file contains the code (written in functions) to render the Plot Area and Plot Properties section on Streamlit (<a href="https://docs.streamlit.io/en/stable/api.html" target="_blank">Documentation</a>).
+
+
 
 _File template:_
 
