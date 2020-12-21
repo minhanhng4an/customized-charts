@@ -1,48 +1,53 @@
 import streamlit as st
 import pandas as pd
 import json
-from charts.highlight_barchart import highlight_barchart
 from io import StringIO
 
-# TODO: Write doc
+from charts.highlight_barchart import highlight_barchart
+
+# TODO: Write Documentation
 
 def show_highlight_barchart():
+  # -- HEADER -- 
   st.header("Bar Chart with Highlight")
 
-  st.markdown('''<Description>''')
+
+  # -- DESCRIPTION -- 
+  st.markdown('''_Author: [Anh Minh Nguyen](http://github.com/minhanhng4an)_
+
+  Bar chart with a highlighted bar. Can be useful to make a category stand out from the rest.
+  ''')
+
   with open("charts/highlight_barchart.py", "r") as f:
     dots_plot_code = f.read()
     
+  # -- SHOW CODE -- 
   if st.checkbox("Show Code"):
     st.markdown(f'''
     ```python
     {dots_plot_code}
     ''')
 
-  with open("data/highlight_barchart_data.csv", "r") as f:
+  with open("resources/data/highlight_barchart_data.csv", "r") as f:
     example_text = f.read()
   
 
-  st.sidebar.header("Chart Properties")
+  # -- PLOT PROPERTIES -- 
+  st.sidebar.header("Plot Properties")
 
-  st.sidebar.markdown('''
-  **Required**
-  ''')
-
+  st.sidebar.markdown("**Required**")
   DATA = st.sidebar.text_input("Input Data (csv). Open csv file in a text editor and copy the content to this field.", value=example_text)
-  DATA="\n".join(DATA.split(" "))
-  string_data = StringIO(DATA)
+  DATA = "\n".join(DATA.split(" "))
+  string_data = StringIO(DATA) # Parse string to csv format
   data = pd.read_csv(string_data)
   st.markdown("__Data__")
   st.dataframe(data)
 
-  CATEGORY_NAME = st.sidebar.text_input("Name of Category Column. If left empty, select first column.", value="category")
-  VALUE_NAME= st.sidebar.text_input("Name of Value Column. If left empty, select second column.", value="valueA")
-  HIGHLIGHT_INDEX = int(st.sidebar.number_input("Index of Highlighted Value (In current sorting order)", value=3, min_value=0, max_value=len(data)-1))
+  CATEGORY_NAME = st.sidebar.text_input("Name of Category Column (If left empty, select first column)", value="category")
+  VALUE_NAME= st.sidebar.text_input("Name of Value Column (If left empty, select second column)", value="valueA")
+  HIGHLIGHT_INDEX = int(st.sidebar.number_input("Index of Highlighted Value in current sorting order (First category has index 0)", value=3, min_value=0, max_value=len(data)-1))
 
-  st.sidebar.markdown('''
-  **Optional**
-  ''')
+  st.sidebar.markdown("**Optional**")
 
   GRID_WIDTH = int(st.sidebar.number_input("Width of the grid", value=7))
   GRID_HEIGHT = int(st.sidebar.number_input("Height of the grid", value=5))
@@ -59,9 +64,12 @@ def show_highlight_barchart():
   See more about [Here](https://matplotlib.org/3.1.0/gallery/text_labels_and_annotations/text_fontdict.html)
   ''')
 
-  LABLE_STYLE = str(json.loads(LABLE_STYLE))
+  LABLE_STYLE = json.loads(LABLE_STYLE) # Parse string to dictionary
 
-  st.pyplot(highlight_barchart(data,
+  # -- PLOT -- 
+  st.markdown("__Plot__")
+  st.pyplot(highlight_barchart(
+             data,
              CATEGORY_NAME,
              VALUE_NAME,
              HIGHLIGHT_INDEX,
