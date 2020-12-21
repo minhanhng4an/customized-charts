@@ -150,5 +150,9 @@ plot_types = {
   "Your Plot Name": show_your_plot_name
 }
 ```
+10. If you install any additional dependencies
+```
+pip freeze > requirements.txt
+```
 
 10. Commit & Send a Pull Request
