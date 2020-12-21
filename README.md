@@ -82,7 +82,7 @@ def your_plot_name():
 
 ```
 
-7. In folder component, create `your_plot_name.py` (`your_plot_name` is the name of the plot you want to make)
+7. In folder `component`, create `your_plot_name.py` (`your_plot_name` is the name of the plot you want to make)
 
 This file contains the code (written in functions) to render the Plot Area and Plot Properties section on Streamlit (<a href="https://docs.streamlit.io/en/stable/api.html" target="_blank">Documentation</a>).
 
