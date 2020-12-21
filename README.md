@@ -93,7 +93,7 @@ _File template:_
 ````python
 import streamlit as st
 
-from charts.your_plot_name import your_plot_name
+from charts.your_plot_name import your_plot_name # TODO
 
 def show_your_plot_name():
 
